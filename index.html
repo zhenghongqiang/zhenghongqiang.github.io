@@ -4,8 +4,45 @@
 	<meta charset="UTF-8">
 	<title>Document</title>
 	<link rel="stylesheet" href="/css/common.css">
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
 </head>
 <body>
-	这是我的页aa面
+	<div  id="info">
+		<div>
+			<label for="">第一句</label>
+			<input type="text" name="" id="" v-model="one">
+		</div>
+		<div>
+			<label for="">第二句</label>
+			<input type="text" name="" id="" v-model="two">
+		</div>
+		<button @click="clk">计算</button>
+		<pre style="color:#ff5555" v-show = "tree">
+			{{ tree }}
+		</pre>
+	</div>	
+
+
+<script type="text/javascript">
+	var app = new Vue({
+		el : '#info',
+		data : {
+			one: '',
+			two: '',
+			tree: false,
+			
+		},
+		computed :{
+			// tree() {
+			// 	return this.two+this.one;
+			// }
+		},
+		methods:{
+			clk(){
+				this.tree = Number(this.one)+Number(this.two);
+			}
+		},
+	})
+</script>
 </body>
 </html>
