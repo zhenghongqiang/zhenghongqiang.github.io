@@ -35,16 +35,16 @@
 <body>
 	<div id="info">
 		<div>
-			<label for="">第一句</label>
+			<label for="">加数</label>
 			<input type="text" name="" id="" v-model="one">
 		</div>
 		<div>
-			<label for="">第二句</label>
+			<label for="">加数</label>
 			<input type="text" name="" id="" v-model="two">
 		</div>
 		<p style="color:#ff5555" v-show = "tree">{{ tree }}</p>
 		<button @click="clk">计算</button>
-		
+
 		<div :class="isC ?'color1':'color2'">这里就是颜色</div>
 		<button @click="changeColor">改变颜色</button>
 	</div>	
