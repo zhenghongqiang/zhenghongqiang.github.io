@@ -63,6 +63,14 @@
 		computed :{
 			
 		},
+		watch:{
+			one(){
+				if(isNaN(this.one)){
+					this.one = '';
+					return;
+				}
+			},
+		},
 		methods:{
 			clk(){
 				this.tree = Number(this.one)+Number(this.two);
