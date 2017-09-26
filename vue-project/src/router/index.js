@@ -1,15 +1,15 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Hello from '@/components/Hello'
+import App from '@/App'
+import First from '@/first'
 
 Vue.use(Router)
 
-export default new Router({
+let routerConfig = new Router({
   routes: [
-    {
-      path: '/',
-      name: 'Hello',
-      component: Hello
-    }
+    { path: '/index', name: 'Hello', component: App },
+    { path: '/first', name: 'First', component: First }
   ]
 })
+
+export default routerConfig
