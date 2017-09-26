@@ -1,6 +1,13 @@
 <style lang="">
   .btn{
     padding: 6px 10px;
+    color:#fff;
+    background: #ff5555;
+    border: 0;
+    outline: 0;
+  }
+  .btn:active{
+      background: rgba(0,0,0,.7);
   }
 </style>
 <template>
@@ -11,10 +18,10 @@
                 {{ index }} . {{ item.desc }}
             </li>
         </ul>
-        <button @click="changeArr()">点击</button>
+        <button class="btn" @click="changeArr()">点击</button>
         <ul v-show="newArr.length > 0">
 			<li>这是新数组</li>
-          	<li v-for="(item,index) in newArr" :key="index">{{ item.desc }}</li>
+          	<li v-for="(item,index) in newArr" :key="index">{{ index }} . {{ item.desc }}</li>
         </ul>
     </div>
 </template>
@@ -25,13 +32,16 @@ export default {
     return {
       items: [
         {
-          desc: '这是一段很长很长的描述'
+            id: 1,
+            desc: '这是一段很长很长的描述2'
         },
         {
-          desc: '这是一段很长很长的描述'
+            id: 2,            
+            desc: '这是一段很长很长的描述1'
         },
         {
-          desc: '这是一段很长很长的描述'
+            id: 3,            
+            desc: '这是一段很长很长的描述3'
         }
       ],
       newArr: []
@@ -39,6 +49,9 @@ export default {
   },
   methods: {
     changeArr () {
+        this.newArr = this.items.filter((item,index,arr) => {
+            return index > 1;
+        })
     }
   }
 }
