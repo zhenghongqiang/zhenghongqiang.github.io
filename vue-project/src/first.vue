@@ -9,16 +9,26 @@
   .btn:active{
       background: rgba(0,0,0,.7);
   }
+  .red{
+      color:#ff5555;
+  }
 </style>
 <template>
     <div>
         这是第一个页面
         <ul>
-            <li v-for="(item,index) in items" :key="index">
-                {{ index }} . {{ item.desc }}
-            </li>
+            <template v-for="(item,index) in items">
+                <li :key="index">
+                    {{ index }} . {{ item.desc }}
+                </li>
+            </template>
         </ul>
-        <button class="btn" @click="changeArr()">点击</button>
+        <div class="red">{{ info.title }}</div>
+        <div class="red">{{ info.desc }}</div>
+        <div class="red">{{ info.new }}</div>
+        <button class="btn" @click="changeArr()">filter</button>
+        <button class="btn" @click="editArr()">视图更新</button>
+        <button class="btn" @click="editObj()">更改对象</button>
         <ul v-show="newArr.length > 0">
 			<li>这是新数组</li>
           	<li v-for="(item,index) in newArr" :key="index">{{ index }} . {{ item.desc }}</li>
@@ -30,6 +40,10 @@ export default {
   name: 'first',
   data () {
     return {
+      info: {
+        title: '这是个对象的标题',
+        desc: '这是个对象的描述',
+      },
       items: [
         {
             id: 1,
@@ -51,6 +65,19 @@ export default {
     changeArr () {
         this.newArr = this.items.filter((item,index,arr) => {
             return index > 1;
+        })
+    },
+    editArr() {
+        // this.items[0] = { desc:'123123'};
+        // Vue.set(example1.items, indexOfItem, newValue)
+        this.$set(this.items,0,{ desc:'123123'});
+        this.items.splice(1,1,{ desc:'asd123123'});
+    },
+    editObj() {
+        this.info.desc = '更新了~~~';
+        this.$set(this.info,'new','添加新的')
+        this.info = Object.assign({},this.info,{
+            year:'12年'
         })
     }
   }

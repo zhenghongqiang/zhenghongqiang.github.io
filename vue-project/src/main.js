@@ -6,8 +6,10 @@ import router from './router'
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
-var vm = new Vue({
+window['vm'] = new Vue({
   el: '#app',
   router,
-  template: '<router-view></router-view>'
+  template: `
+      <router-view></router-view>
+      `
 })
