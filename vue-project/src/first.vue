@@ -37,6 +37,17 @@
             <button class="btn" @click="num++">我要点n次</button>
             <p class="red">{{ num }}</p>
         </div>
+        <div id='example-3'>
+            <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+            <label for="jack">Jack</label>
+            <input type="checkbox" id="john" value="John" v-model="checkedNames">
+            <label for="john">John</label>
+            <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+            <label for="mike">Mike</label>
+            <br>
+            <span>Checked names: {{ checkedNames }}</span>
+        </div>
+              
         
     </div>
 </template>
@@ -45,6 +56,7 @@ export default {
   name: 'first',
   data () {
     return {
+        checkedNames: [],
         num: 0,
         info: {
             title: '这是个对象的标题',
