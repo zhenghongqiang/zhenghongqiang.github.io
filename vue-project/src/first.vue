@@ -48,7 +48,7 @@
             <span>Checked names: {{ checkedNames }}</span>
         </div>
               
-        
+        <input v-model.lazy="age" type="number">
     </div>
 </template>
 <script>
@@ -58,7 +58,9 @@ export default {
     return {
         checkedNames: [],
         num: 0,
+        age: '',
         info: {
+            age: '',
             title: '这是个对象的标题',
             desc: '这是个对象的描述',
         },
@@ -78,6 +80,11 @@ export default {
         ],
         newArr: []
     }
+  },
+  watch: {
+    age(val){
+        console.log(val);
+    },
   },
   methods: {
     changeArr (event) {
